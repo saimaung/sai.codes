@@ -2,20 +2,150 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 220 25% 97%;
+    --foreground: 230 25% 25%;
+
+    --card: 220 25% 99%;
+    --card-foreground: 230 25% 25%;
+
+    --popover: 220 25% 99%;
+    --popover-foreground: 230 25% 25%;
+
+    --primary: 200 85% 45%;
+    --primary-foreground: 220 25% 97%;
+
+    --secondary: 220 20% 92%;
+    --secondary-foreground: 230 25% 25%;
+
+    --muted: 220 20% 94%;
+    --muted-foreground: 230 20% 45%;
+
+    --accent: 200 85% 45%;
+    --accent-foreground: 220 25% 97%;
+
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 220 25% 97%;
+
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
+    --ring: 200 85% 45%;
+
+    --radius: 0.5rem;
+
+    /* Syntax highlighting colors - Tokyo Night Light */
+    --sh-class: #2e7de9;
+    --sh-identifier: #34548a;
+    --sh-sign: #006a83;
+    --sh-string: #587539;
+    --sh-keyword: #7847bd;
+    --sh-comment: #848cb5;
+    --sh-jsxliterals: #007197;
+  }
+
+  .dark {
+    --background: 230 20% 11%;
+    --foreground: 220 40% 98%;
+
+    --card: 230 20% 13%;
+    --card-foreground: 220 40% 98%;
+
+    --popover: 230 20% 13%;
+    --popover-foreground: 220 40% 98%;
+
+    --primary: 190 95% 65%;
+    --primary-foreground: 230 20% 11%;
+
+    --secondary: 240 20% 25%;
+    --secondary-foreground: 220 40% 98%;
+
+    --muted: 230 20% 15%;
+    --muted-foreground: 240 10% 60%;
+
+    --accent: 190 95% 65%;
+    --accent-foreground: 230 20% 11%;
+
+    --destructive: 0 80% 63%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 240 20% 20%;
+    --input: 240 20% 20%;
+    --ring: 190 95% 65%;
+
+    --radius: 0.5rem;
+
+    /* Syntax highlighting colors */
+    --sh-class: #7aa2f7;
+    --sh-identifier: #c0caf5;
+    --sh-sign: #89ddff;
+    --sh-string: #9ece6a;
+    --sh-keyword: #bb9af7;
+    --sh-comment: #565f89;
+    --sh-jsxliterals: #7dcfff;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .title {
+    @apply font-mono text-3xl font-bold underline decoration-primary/75 decoration-2 underline-offset-8;
+  }
+
+  .prose pre {
+    @apply overflow-x-auto rounded-lg bg-muted/50 px-5 py-4 text-sm border border-border/50 text-foreground font-mono;
+  }
+
+  .prose code {
+    @apply rounded-lg bg-muted/50 px-1.5 py-0.5 text-foreground font-mono text-[0.9em];
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 text-foreground;
+    line-height: 1.75;
+  }
+
+  .prose code span {
+    @apply font-medium text-foreground;
+  }
+
+  /* Ensure code blocks are visible in light mode */
+  :root[class~="light"] .prose pre,
+  :root[class~="light"] .prose code {
+    @apply bg-gray-100 text-gray-900;
+  }
+
+  :root[class~="light"] .prose pre code {
+    @apply bg-transparent;
+  }
+
+  /* Terminal cursor animation */
+  @keyframes cursor-blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .cursor-blink {
+    animation: cursor-blink 1.2s step-end infinite;
+  }
 }
