@@ -5,7 +5,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { cn } from "@/lib/utils";
-import { JetBrains_Mono } from "next/font/google";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,10 +38,6 @@ const clash = localFont({
   variable: '--font-clash'
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains"
-});
 
 export const metadata: Metadata = {
   title: "S.ai",

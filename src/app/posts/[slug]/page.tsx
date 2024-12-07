@@ -5,8 +5,9 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons"
 import Image from "next/image"
 import Link from "next/link"
 
-const Post = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = await params
+
+const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const slug = (await params).slug
   // server component
   const post = await getPostBySlug(slug)
 
@@ -15,7 +16,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
   }
 
   const { metadata, content } = post
-  const { title, summary, image, author, publishedAt, tags } = metadata
+  const { title, image, author, publishedAt } = metadata
 
   return (
     <section className='pb-24 pt-32'>
