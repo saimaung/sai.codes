@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,7 +41,7 @@ const clash = localFont({
 
 
 export const metadata: Metadata = {
-  title: "S.ai",
+  title: "S.AI",
   description: "Built with 💙 by Sai Wai Maung",
 };
 
@@ -68,6 +69,9 @@ export default function RootLayout({
         >
           <Header />
           <main className="grow">{children}</main>
+          <Toaster
+            position="top-right"
+          />
           <Footer />
         </ThemeProvider>
       </body>

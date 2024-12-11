@@ -132,20 +132,8 @@ body {
     @apply bg-transparent;
   }
 
-  /* Terminal cursor animation */
-  @keyframes cursor-blink {
-
-    0%,
-    100% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 0;
-    }
-  }
-
-  .cursor-blink {
-    animation: cursor-blink 1.2s step-end infinite;
+  .typing-cursor {
+    border-right: 2px solid #4ade80;
+    padding-right: 2px;
   }
 }

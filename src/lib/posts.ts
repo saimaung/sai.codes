@@ -29,8 +29,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       metadata: { ...data, slug },
       content
     }
-  } catch (error) {
-    console.error(`Error reading or parsing post: ${slug}`, error)
+  } catch {
     return null
   }
 }

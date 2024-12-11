@@ -1,9 +1,11 @@
 import MDXContent from "@/components/mdx-content"
+import NewsletterForm from "@/components/newsletter-form"
 import { getPostBySlug } from "@/lib/posts"
 import { formatDate } from "@/lib/utils"
 import { ArrowLeftIcon } from "@radix-ui/react-icons"
 import Image from "next/image"
 import Link from "next/link"
+import { notFound } from "next/navigation"
 
 
 const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
@@ -12,7 +14,7 @@ const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const post = await getPostBySlug(slug)
 
   if (!post) {
-    return <div>Post not found</div>
+    notFound()
   }
 
   const { metadata, content } = post
@@ -54,9 +56,9 @@ const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
           <MDXContent source={content} />
         </main>
 
-        {/* <footer className='mt-16'>
+        <footer className='mt-16'>
           <NewsletterForm />
-        </footer> */}
+        </footer>
       </div>
     </section>
   )
